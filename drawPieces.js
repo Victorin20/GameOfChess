@@ -6,42 +6,7 @@ function setGame()
 
     drawTable();
 
-   
-let blackRookImg1 = document.createElement("img");
-let blackRookImg2 = document.createElement("img");
-
-
-let blackKnightImg1 = document.createElement("img");
-let blackKnightImg2 = document.createElement("img");
-
-let blackKingImg = document.createElement("img");
-let blackCrownImg = document.createElement("img");
-let blackChessPawnImg = document.createElement("img");
-let blackBishopImg = document.createElement("img");
-let whiteRookImg = document.createElement("img");
-let whiteBishopImg = document.createElement("img");
-let whiteKingImg = document.createElement("img");
-let whiteCrownImg = document.createElement("img");
-let whiteChessPawnImg = document.createElement("img");
-let whiteKnightImg = document.createElement("img");
-
-blackRookImg1.src = "./images/BlackRook.png";
-blackRookImg2.src = "./images/BlackRook.png";
-blackKnightImg1.src="./images/blackKnight.png";
-blackKnightImg2.src="./images/blackKnight.png";
-
-blackKingImg.src="./images/blackKing.png";
-blackCrownImg.src="./images/blackCrown.png";
-blackChessPawnImg.src="./images/blackChessPawn.png";
-blackBishopImg.src="./images/blackBishop.png";
-whiteRookImg.src="./images/whiteRook.png";
-whiteBishopImg.src="./images/whiteBishop.png";
-whiteKingImg.src="./images/whiteKing.png";
-whiteCrownImg.src="./images/whiteCrown.png";
-whiteChessPawnImg.src="./images/whiteChessPawn.png";
-whiteKnightImg.src="./images/whiteKnight.png";
-
-LeftBlackRook = new Rook(4,3, 'black', 'rook');
+LeftBlackRook = new Rook(0,0, 'black', 'rook');
 pieces.push(LeftBlackRook );
 
 LeftBlackRook .getElement().appendChild(LeftBlackRook.getImage());
@@ -85,7 +50,7 @@ id = LeftBlackBishop.getY().toString() + "-" + LeftBlackBishop.getX().toString()
 LeftBlackBishop .getElement().id = id;              
 document.getElementById(id).append(LeftBlackBishop.getElement());
 
-BlackKing = new King(4, 0, 'black', 'king');
+BlackKing = new King(4,0, 'black', 'king');
 pieces.push(BlackKing);
 BlackKing .getElement().appendChild(BlackKing.getImage());
 id = BlackKing.getY().toString() + "-" + BlackKing.getX().toString();

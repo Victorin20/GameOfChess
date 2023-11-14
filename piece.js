@@ -23,6 +23,7 @@ class Piece{
     setIsNotSelected(){this.isSelected = false;}
     getPiecePosition(){return this.y.toString() + "-" + this.x.toString();}
     getColor(){return this.color;}
+    getType(){return this.type;}
 
 
     markSelectedPiece(selectedPiece)
@@ -200,8 +201,6 @@ class Piece{
         {
             table[yPosition][xPosition] = 1;
             table[this.getY()][this.getX()] = 0;      
-            if(yPosition < this.getY() && xPosition < this.getX())move.Direction = "left";
-            if(yPosition < this.getY() && xPosition > this.getX())move.Direction = "right";
             this.setY(yPosition);
             this.setX(xPosition);
             this.getElement().removeChild(this.getImage());
@@ -220,8 +219,6 @@ class Piece{
         {
             table[yPosition][xPosition] = -1;           
             table[this.getY()][this.getX()] = 0;
-            if(yPosition > this.getY() && xPosition < this.getX())move.Direction = "left";
-            if(yPosition > this.getY() && xPosition > this.getX())move.Direction = "right";
             this.setY(yPosition);
             this.setX(xPosition);
             this.getElement().removeChild(this.getImage());
@@ -236,6 +233,27 @@ class Piece{
         
     }
     
+}
+
+delete(yPosition, xPosition, pieces)
+{
+let pieceToDeletePosition = 0;
+            pieces.forEach(function(pieceToTake){
+                
+            if(pieceToTake.getX() === xPosition && pieceToTake.getY() === yPosition)
+            {
+
+            
+                pieceToTake.getElement().removeChild(pieceToTake.getImage());
+                pieceToTake.getElement().remove();
+                pieceToTake.getImage().id = yPosition.toString() + "-" + xPosition.toString(); 
+                
+             
+                
+                pieces.splice(pieceToDeletePosition, 1);
+            }
+            pieceToDeletePosition++;
+        })
 }
 
 }

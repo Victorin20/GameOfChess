@@ -11,7 +11,7 @@ let table = [
     [0, 0, 0, 0, 0, 0, 0, 0 ],
     [0, 0, 0, 0, 0, 0, 0, 0 ],
     [0, 0, 0, 0, 0, 0, 0, 0 ],
-    [-1, -1, -1, -1, -1, -1, -1, -1 ],
+    [-1, -1, -1, -1, -1, -1, -1,-1 ],
     [-1, -1, -1, -1, -1, -1, -1, -1 ],
 
 ];
@@ -28,6 +28,7 @@ document.addEventListener("click", (event) => {
     let xPosition = selectedElement.id[2];
     yPosition = parseInt(yPosition);
     xPosition = parseInt(xPosition);
+    let once = false;
 
     
     pieces.forEach(function(piece)
@@ -42,7 +43,35 @@ document.addEventListener("click", (event) => {
                 piece.takePiece(yPosition,xPosition, posibleMovement, pieces); 
                 
                 piece.move(yPosition, xPosition,posibleMovement);
-               
+                
+                if(piece.getType() === 'chessPawn' && piece.getColor() === "black" && piece.getY() === 7 && !once)
+                {
+                    
+                    piece.delete(piece.getY(), piece.getX(),pieces);
+                    BlackCrown = new Crown(piece.getX(), piece.getY(),"black", "crown");
+                    BlackCrown.getElement().appendChild(BlackCrown.getImage());
+                    let id = BlackCrown.getY().toString()+"-"+BlackCrown.getX().toString();
+                    BlackCrown.getElement().id = id;
+                    document.getElementById(id).append(BlackCrown.getElement());
+                    pieces.push(BlackCrown);
+                    console.log(pieces);
+                    once = true;
+                }
+
+                if(piece.getType() === 'chessPawn' && piece.getColor() === "white" && piece.getY() === 0 && !once)
+                {
+                    
+                    piece.delete(piece.getY(), piece.getX(),pieces);
+                    BlackCrown = new Crown(piece.getX(), piece.getY(),"white", "crown");
+                    BlackCrown.getElement().appendChild(BlackCrown.getImage());
+                    let id = BlackCrown.getY().toString()+"-"+BlackCrown.getX().toString();
+                    BlackCrown.getElement().id = id;
+                    document.getElementById(id).append(BlackCrown.getElement());
+                    pieces.push(BlackCrown);
+                    console.log(pieces);
+                    once = true;
+                }
+                
                 pieces.forEach(function(piece)
                 {
                 piece.clearAllLastMoves();
@@ -87,7 +116,7 @@ document.addEventListener("click", (event) => {
 
     for(let x = 0; x < 8; x++)
     {
-        //console.log(pieces);
+        //console.log(table[x]);
     }
 
 });

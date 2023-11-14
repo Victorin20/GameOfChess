@@ -26,18 +26,19 @@ class Rook extends Piece{
         let redValue = 0;
         let greenValue = 255;
         let blueValue = 0;
+        let factor = 25;
                 
     
         let rgbColor = `rgb(${redValue}, ${greenValue}, ${blueValue})`;
         for(let y = this.y+1; y < 8; y++)
         {     
-            
+            if(table[y][this.x] === -1 && this.getColor() === 'white')break;
+            if(table[y][this.x] === 1 && this.getColor() === 'black')break;
             if(table[y][this.x] === 0)
             {
                 document.getElementById((y).toString() + "-" +(this.x).toString()).style.backgroundColor = rgbColor;
-                greenValue-=20;
+                greenValue-=factor;
                 rgbColor = `rgb(${redValue}, ${greenValue}, ${blueValue})`;
-                if(table[y][this.x] === 1)break;
             }
             
             
@@ -60,13 +61,13 @@ class Rook extends Piece{
         for(let x = this.x+1; x < 8; x++)
         {
        
-
+            if(table[this.y][x] === -1 && this.getColor() === "white")break;
+            if(table[this.y][x] === 1 && this.getColor() === "black")break;
             if(table[this.y][x] === 0)
             {
                 document.getElementById((this.y).toString() + "-" +(x).toString()).style.backgroundColor = rgbColor;
-                greenValue-=20;
+                greenValue-=factor;
                 rgbColor = `rgb(${redValue}, ${greenValue}, ${blueValue})`;
-                if(table[this.y][x] === 1)break;
             }
             
             if(table[this.y][x] === this.opponent)
@@ -89,13 +90,13 @@ class Rook extends Piece{
             
 
             
-          
+            if(table[y][this.x] === -1 && this.getColor() === "white")break;
+            if(table[y][this.x] === 1 && this.getColor() === "black")break;       
             if(table[y][this.x] === 0)
             {
                 document.getElementById((y).toString() + "-" +(this.x).toString()).style.backgroundColor = rgbColor;
-                greenValue-=20;
+                greenValue-=factor;
                 rgbColor = `rgb(${redValue}, ${greenValue}, ${blueValue})`;
-                if(table[y][this.x] === 1)break;       
             }
             
             if(table[y][this.x] === this.opponent)
@@ -117,13 +118,13 @@ class Rook extends Piece{
         for(let x = this.x-1; x >= 0; x--)
         {
        
-
+            if(table[this.y][x] === -1 && this.getColor() === 'white')break;
+            if(table[this.y][x] === 1 && this.getColor() === 'black')break;
             if(table[this.y][x] === 0)
             {
                 document.getElementById((this.y).toString() + "-" +(x).toString()).style.backgroundColor = rgbColor;
-                greenValue-=20;
+                greenValue-=factor;
                 rgbColor = `rgb(${redValue}, ${greenValue}, ${blueValue})`;
-                if(table[this.y][x] === 1)break;
             }
             
             if(table[this.y][x] === this.opponent)
@@ -143,10 +144,11 @@ class Rook extends Piece{
         for(let y = this.y+1; y < 8; y++)
         {     
             
+            if(table[y][this.x] === -1 && this.getColor() === "white")break;
+            if(table[y][this.x] === 1 && this.getColor() === "black")break;
             if(table[y][this.x] === 0)
             {
                 possibleMovements.push((y).toString() + "-" +(this.x).toString());
-                if(table[y][this.x] === 1)break;
             }
             
             
@@ -162,10 +164,11 @@ class Rook extends Piece{
         for(let x = this.x+1; x < 8; x++)
         {
        
+            if(table[this.y][x] === -1 && this.getColor() === "white")break;
+            if(table[this.y][x] === 1 && this.getColor() === "black")break;
             if(table[this.y][x] === 0)
             {
                 possibleMovements.push((this.y).toString() + "-" +(x).toString());
-                if(table[this.y][x] === 1)break;
             }
             
             if(table[this.y][x] === this.opponent)
@@ -179,10 +182,11 @@ class Rook extends Piece{
         for(let y = this.y-1; y >= 0; y--)
         {
                 
+            if(table[y][this.x] === -1 && this.getColor() === "white")break;
+            if(table[y][this.x] === 1 && this.getColor() === "black")break;       
             if(table[y][this.x] === 0)
             {
                 possibleMovements.push((y).toString() + "-" +(this.x).toString());
-                if(table[y][this.x] === 1)break;       
             }
             
             if(table[y][this.x] === this.opponent)
@@ -198,10 +202,11 @@ class Rook extends Piece{
         {
        
 
+            if(table[this.y][x] === -1 && this.getColor() === "white")break;
+            if(table[this.y][x] === 1 && this.getColor() === "black")break;
             if(table[this.y][x] === 0)
             {
                 possibleMovements.push((this.y).toString() + "-" +(x).toString());
-                if(table[this.y][x] === 1)break;
             }
             
             if(table[this.y][x] === this.opponent)
@@ -212,7 +217,7 @@ class Rook extends Piece{
             }
 
         }
-
+  
         return possibleMovements;
     }
 
